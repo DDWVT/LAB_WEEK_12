@@ -38,25 +38,21 @@ android {
 
 dependencies {
 
-    val moshiVersion = "1.15.1" // Tambahkan variabel versi
-    val retrofitVersion = "2.9.0" // Pastikan versi Retrofit
+    val moshiVersion = "1.15.1"
+    val retrofitVersion = "2.9.0"
 
-    // Retrofit & Moshi
-    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion") // (Menggantikan libs.retrofit)
-    implementation("com.squareup.retrofit2:converter-moshi:$retrofitVersion") // (Menggantikan libs.converter.moshi)
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-moshi:$retrofitVersion")
     implementation("com.squareup.moshi:moshi-kotlin:$moshiVersion")
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion") // (Menggantikan libs.moshi.kotlin.codegen)
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
 
-    // Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
-    // LiveData & ViewModel
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
-    // UI/Basic Android Components (Biarkan ini menggunakan libs jika sudah ada)
     implementation(libs.androidx.recyclerview)
     implementation(libs.glide)
     implementation(libs.androidx.core.ktx)
