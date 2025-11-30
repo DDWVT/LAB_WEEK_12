@@ -42,8 +42,17 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle (Lifecycle.State.STARTED) {
                 launch {
-                    movieViewModel.popularMovies.collect {
-                            movies ->movieAdapter.addMovies (movies)
+                    val currentYear =
+                        Calendar.getInstance().get(Calendar.YEAR).toString()
+
+                    movieViewModel.popularMovies.collect { popularMovies ->
+                        movieAdapter.addMovies (
+                            popularMovies
+                                .filter { movie ->
+                                    movie.releaseDate?.startsWith(currentYear) == true
+                                }
+                                .sortedByDescending { it.popularity }
+                        )
                     }
                 }
                 launch {
